@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
+@import 'tailwindcss';
+
+/*
+ * Design tokens live here, not in a JS tailwind.config — this project runs
+ * Tailwind v4, which only honors a JS config if it's explicitly pointed to
+ * with @config. A previous version defined colors in tailwind.config.ts
+ * with nothing importing it, so every bg-leaf/text-butter/etc utility in
+ * the app silently generated no CSS at all. --color-* here is the v4-native
+ * way to define them: each token becomes real bg, text and border utilities.
+ */
+@theme {
+  --color-paper: #faf9f5;
+  --color-wash: #eef3ea;
+  --color-ink: #17251e;
+  --color-leaf: #1f5c3d;
+  --color-leaf-dark: #163f2a;
+  --color-chili: #d9481f;
+  --color-chili-dark: #b23a17;
+  --color-butter: #d6a84a;
+  --color-danger: #c43d3d;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+
+  --shadow-soft: 0 18px 50px rgba(23, 37, 30, 0.08);
+  --shadow-card: 0 10px 28px rgba(23, 37, 30, 0.10);
+  --shadow-pop: 0 20px 45px rgba(217, 72, 31, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 3px solid var(--color-chili);
+  outline-offset: 3px;
+}
+
+.grain {
+  background-image: radial-gradient(rgba(31, 92, 61, 0.12) 0.7px, transparent 0.7px);
+  background-size: 14px 14px;
+}
+.reveal {
+  animation: reveal 0.7s ease both;
+}
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fixed mobile bottom tab bar in the authenticated app needs breathing room
+   below content so the last item on a page is never hidden behind it. */
+.pb-tabbar {
+  padding-bottom: 84px;
+}
+@media (min-width: 768px) {
+  .pb-tabbar {
+    padding-bottom: 0;
+  }
+}
