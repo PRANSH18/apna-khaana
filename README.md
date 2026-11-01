@@ -4,6 +4,8 @@
 
 This project has two halves: a working product built around a meal-planning agent, and a seed-round investment case for the same business.
 
+**Live app: [apna-khaana.netlify.app](https://apna-khaana.netlify.app/)**
+
 ## The investment case
 
 Apna Khaana lets customers configure everyday meals by spice level, oil level, protein, base and nutritional add-ons, while the kitchen process stays standardised. The thesis is that personalisation is the retention engine cloud-kitchen economics depend on.
